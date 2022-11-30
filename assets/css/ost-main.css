@@ -1,0 +1,31 @@
+.ost-form input,
+.ost-form textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+@media screen and (min-width: 992px) {
+  .ost-form input,
+  .ost-form textarea {
+    width: 50%;
+  }
+}
+
+.ost-form textarea {
+  min-height: 150px;
+}
+
+#submit {
+  width: auto;
+  padding: 0 1em;
+}
+
+.attention{
+    color: red !important;
+    font-size: 1.1em;
+}
+
+.error {
+    border-color: red !important;
+}
