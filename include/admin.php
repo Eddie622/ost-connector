@@ -51,20 +51,35 @@ class OST_Admin {
     public function OST_admin_page(){
         // Initialize
         $errors = [];
+        $options = get_option( 'OST_Connector_settings' );
         
         // Handle POST
         if ($_SERVER['REQUEST_METHOD'] === 'POST'):
             $args = [];
             
-            var_dump($_POST);
-            var_dump($_FILES);
+            // var_dump($_POST);
             
-            // Validate/Sanitize Input
+            // Validate/Sanitize/Process Input
             empty($_POST['name']) ? $errors[] = 'name' : $args['name'] = esc_html($_POST['name']);
             empty($_POST['email']) ? $errors[] = 'email' : $args['email'] = esc_html($_POST['email']);
             empty($_POST['subject']) ? $errors[] = 'subject' : $args['subject'] = esc_html($_POST['subject']);
             empty($_POST['message']) ? $errors[] = 'message' : $args['message'] = esc_html($_POST['message']);
-            empty($_FILES['attachments']) ?: $args['attachments'] = base64_encode($_FILES['attachments']);
+            
+            // var_dump($_FILES['attachments']);
+            
+            // if(!empty($_FILES['attachments'])):
+            //     $attachments = $_FILES['attachments'];
+            //     is_array($attachments) ?: $attachments = array($attachments);
+                
+            //     if(!empty($attachments['name'])):
+            //         $args['attachments'] = array();
+            //         for ($i = 0; $i <= count($attachments['name'])-1; $i++):
+            //             $args['attachments'][] = array( $attachments['name'][$i] => "data:{$attachments['type'][$i]};base64,".base64_encode($attachments['tmp_name'][$i]));
+            //         endfor;
+            //     endif;
+            // endif;
+
+            // var_dump($args['attachments']);
             
             // Send to Helpdesk
             if(empty($errors)):
@@ -76,6 +91,7 @@ class OST_Admin {
         // Display page
         include_once(OST_CONNECTOR_DIR . 'templates/admin-page.php');
         
+        // var_dump($response);
     }
 }
 

@@ -60,6 +60,13 @@ class OST_Settings {
           'OST_Connector'
       );
       add_settings_field(
+          'name',
+          'Helpdesk Name',
+          [$this, 'OST_render_name_field'],
+          'OST_Connector',
+          'section_one'
+      );
+      add_settings_field(
           'url',
           'Helpdesk URL',
           [$this, 'OST_render_url_field'],
@@ -73,13 +80,13 @@ class OST_Settings {
           'OST_Connector',
           'section_one'
       );
-       add_settings_field(
-          'dev_notes',
-          'Dev Notes',
-          [$this, 'OST_render_dev_notes_field'],
-          'OST_Connector',
-          'section_one'
-      );
+    //   add_settings_field(
+    //       'dev_notes',
+    //       'Dev Notes',
+    //       [$this, 'OST_render_dev_notes_field'],
+    //       'OST_Connector',
+    //       'section_one'
+    //   );
     }
 
     public function OST_validate_plugin_settings( $input ) {
@@ -89,6 +96,15 @@ class OST_Settings {
     
     public function OST_render_section_one_text(){
         printf('<p>General Configurations</p>');
+    }
+    
+    public function OST_render_name_field() {
+      $options = get_option( 'OST_Connector_settings' );
+      printf(
+        '<input type="text" name="%s" value="%s" />',
+        esc_attr( 'OST_Connector_settings[name]' ),
+        esc_attr( $options['name'] )
+      );
     }
 
     public function OST_render_api_key_field() {

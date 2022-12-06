@@ -59,13 +59,13 @@ class OST_API_Controller {
     {
         $options = get_option( 'OST_Connector_settings' );
         
-        $data = array_merge($args, [
-            'alert' => false,
+        $data = array_merge([
+            'alert' => true,
             'autorespond' => true,
             'source' => 'API',
             'ip' => $_SERVER['REMOTE_ADDR'],
             'website' => $_SERVER['SERVER_NAME']
-        ]);
+        ], $args);
         
         return [
             'headers' => [
