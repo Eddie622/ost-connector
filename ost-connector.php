@@ -2,7 +2,7 @@
 
 /**
  * 	Plugin Name:	    OST Connector
- * 	Description:	    Extends Scand OS Ticket Connector Functionality to include admin page and email submission
+ * 	Description:	    Links an OST installation for ticket creation within Wordpress
  * 	Version: 		    0.9.0
  * 	Author: 		    Heriberto Torres
  * 	Author URI: 	    https://heribertotorres.com
