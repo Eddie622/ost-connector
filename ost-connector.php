@@ -84,7 +84,21 @@ final class OST_Connector
      */
     function add_menus(){
         add_action( 'admin_menu', [OST_Admin(), 'OST_Helpdesk_Menu'] );
+        add_action( 'admin_bar_menu', [$this, 'add_toolbar'], 500);
         !current_user_can('manage_options')?: add_action( 'admin_menu', [OST_Settings(), 'OST_add_settings_page'] );
+    }
+    
+    /**
+     * Add to Menu Toolbar
+     * 
+     * @return  void
+     */
+    function add_toolbar(WP_Admin_Bar $admin_bar){
+        $admin_bar->add_menu( array(
+            'id'    => 'ost-helpdesk',
+            'title' => '<span class="ab-icon dashicons dashicons-tickets"></span>' . _( 'Helpdesk' ),
+            'href'  => admin_url('admin.php?page=ost-connector%2Fost-connector-admin.php'),
+        ));
     }
     
     /**
